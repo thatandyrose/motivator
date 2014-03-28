@@ -14,6 +14,7 @@ gem 'omniauth-facebook'
 gem 'pg'
 gem 'thin'
 gem 'slim'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'better_errors'

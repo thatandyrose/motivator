@@ -1,5 +1,6 @@
 // import the CSS framework
 @import "bootstrap";
+@import "font-awesome";
 
 // make all images responsive by default
 img {
@@ -34,7 +35,6 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
@@ -43,3 +43,36 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+.navbar-fixed-top{
+  background-color: #ffffff;
+  border-bottom: 1px #eeeeee solid;
+}
+
+.jumbotron{
+  background-color: initial;
+  border: 1px #eeeeee solid;
+}
+
+.marketing{ 
+  .col-lg-12 h2 {
+    text-align:center;
+  }
+  p{
+    font-size: 14px;
+    font-weight: 200;
+  }
+  ol li{
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width: 768px){
+  .marketing{
+    p{
+      font-size: 19px;
+    }
+  }
+}
+
+@import "jumbo_narrow";
