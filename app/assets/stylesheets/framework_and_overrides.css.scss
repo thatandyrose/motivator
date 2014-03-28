@@ -34,7 +34,6 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
@@ -43,3 +42,10 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+.jumbotron{
+  background-color: initial;
+  border: 1px #eeeeee solid;
+}
+
+@import "jumbo_narrow";
