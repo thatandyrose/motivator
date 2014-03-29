@@ -23,7 +23,7 @@ describe SessionsController do
   describe "creates new user" do
     it "redirects new users with blank email to fill in their email" do
       visit '/signin'
-      page.should have_content('Hi Bob')
+      page.should have_content('Hey Bob')
       page.should have_content('Please enter your email address')
       current_path.should == edit_user_path(User.first)
     end
