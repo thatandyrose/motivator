@@ -28,11 +28,11 @@ describe SessionsController do
       current_path.should == edit_user_path(User.first)
     end
 
-    it "redirects users with email back to root_url" do
+    it "redirects users with email back to motees creation page" do
       @user = FactoryGirl.create(:user, email:"Tester@testing.com", uid:'12345',provider:'facebook')
       visit '/signin'
       page.should have_content('Signed in!')
-      current_path.should == '/'
+      current_path.should == user_motees_path
     end
   end
 
