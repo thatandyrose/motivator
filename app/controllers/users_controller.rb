@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update_attributes(secure_params)
       redirect_to @user
     else
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email,:name)
   end
 
 end

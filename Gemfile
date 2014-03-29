@@ -15,6 +15,7 @@ gem 'pg'
 gem 'thin'
 gem 'slim'
 gem 'font-awesome-rails'
+gem 'pry'
 
 group :development do
   gem 'better_errors'
