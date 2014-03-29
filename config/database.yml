@@ -18,8 +18,7 @@ development:
   encoding: unicode
   database: motivator_development
   pool:     5
-  username: andrewrose
-  password: doublemeat
+  username: postgres
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,8 +45,7 @@ test:
   encoding: unicode
   database: motivator_test
   pool:     5
-  username: andrewrose
-  password: doublemeat
+  username: postgres
   template: template0
 
 production:
@@ -56,6 +54,5 @@ production:
   encoding: unicode
   database: motivator_production
   pool:     5
-  username: andrewrose
-  password: doublemeat
+  username: postgres
   template: template0
