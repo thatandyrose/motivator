@@ -1,0 +1,14 @@
+- @motees.each do |motee|
+  .row.date-rows
+    .col-md-3
+      .date-container
+        .day
+          = motee.created_at.day
+        .date
+          strong = motee.created_at.strftime('%A')
+          br
+          = motee.created_at.strftime('%B')
+          br
+          = motee.created_at.strftime('%Y')
+      
+    .col-md-9 = motee.text

@@ -2,25 +2,38 @@ require 'spec_helper'
 
 describe MoteesController do
   before do
-    @omni_user = FactoryGirl.create :user, :with_omni
+    @omni_user = FactoryGirl.create :user, email: 'andy@testing.com'
   end
   
   context 'no user logged in' do
     
     it 'cant create motee if no user signed in' do
-      visit create_user_motee_path(@omni_user)
+      visit new_motee_path
       
       expect(page).to have_content 'Login please!'
-      expect(page).to have_content 'Sign in or Register with Facebook'
+      expect(page).to have_content 'Sign up today'
     end
 
     it 'cant list motees if no user signed in' do
-      visit user_motees_path(@omni_user)
+      visit motees_path
       
       expect(page).to have_content 'Login please!'
-      expect(page).to have_content 'Sign in or Register with Facebook'
+      expect(page).to have_content 'Sign up today'
     end
 
+  end
+
+  context 'with signed in user withtout e-mail' do
+    before do
+      @omni_user.update_attributes!(email:'')
+      login @omni_user
+      visit motees_path
+    end
+
+    it 'should redirect back to add an e-mail page' do
+      expect(page).to have_content 'Please enter your email address.'
+      expect(current_path).to eq edit_user_path(@omni_user)
+    end
   end
 
   context 'with signed in user' do
@@ -30,10 +43,9 @@ describe MoteesController do
 
     context 'creating motees' do
       before do
-        visit create_user_motee_path(@omni_user)
-
+        visit new_motee_path
         fill_in :motee_text, with: 'do something you love everyday'
-        click_on :save
+        click_on 'Save Motee'
 
         @omni_user.reload
       end
@@ -48,18 +60,18 @@ describe MoteesController do
       end
 
       it 'should redirect back to listing' do
-        expect(current_path).to eq user_motees_path(@omni_user)
+        expect(current_path).to eq motees_path
       end
     end
 
     context 'listing motees' do
       context 'no motees yet' do
         before do
-          visit user_motees_path(@omni_user)
+          visit motees_path
         end
         
-        it 'should show no motees message' do
-          expect(page).to have_content "You haven't created any Motees yet!"
+        it 'should redirect to create new motee' do
+          expect(current_path).to eq new_motee_path
         end
       end
 
@@ -67,8 +79,10 @@ describe MoteesController do
         before do
           FactoryGirl.create :motee, text: 'other motee'
 
-          @omni_user.motees >> FactoryGirl.create :motee, text: 'inspire'
+          @omni_user.motees << FactoryGirl.create(:motee, text: 'inspire')
           @omni_user.save!
+
+          visit motees_path
         end
 
         it 'should list the motees for the user' do

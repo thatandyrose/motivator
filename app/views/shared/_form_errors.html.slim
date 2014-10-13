@@ -1,0 +1,4 @@
+- if f.object.errors.any?
+  #error_explanation
+    - f.object.errors.full_messages.each do |msg|
+      p = msg

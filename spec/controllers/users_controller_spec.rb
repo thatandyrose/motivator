@@ -23,14 +23,6 @@ describe UsersController do
     end
   end
 
-  describe "GET 'show' for logged in user" do
-    it "returns http success" do
-      session[:user_id] = @user.id
-      get 'show', :id => @user
-      response.should be_success
-    end
-  end
-
   describe "GET edit" do
     it "returns http success" do
       session[:user_id] = @user.id

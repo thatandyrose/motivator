@@ -4,7 +4,7 @@
   .lead Catalogue motivational messages and quotes that inspire you, and let Motee remind you that everything is awesome.
   p
     - if user_signed_in?
-      a.btn.btn-lg.btn-success href="#" role="button" Hey #{current_user.first_name}, create a new Motee
+      a.btn.btn-lg.btn-success href="#{new_motee_path}" role="button" Hey #{current_user.first_name}, create a new Motee
     - else
       a.btn.btn-lg.btn-success href="#{signin_path}" role="button" Sign up today #{fa_icon 'facebook-square'}
 .row.marketing

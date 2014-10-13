@@ -2,6 +2,14 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.btn, .submit, form input[type='submit']{
+  white-space: normal;
+}
+
+.navbar-toggle .icon-bar{
+  background-color: #000000;
+}
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -64,6 +72,41 @@ section {
   }
   ol li{
     font-size: 1.8em;
+  }
+}
+
+form{  
+  input[type='text'], textarea {
+    @extend .form-control;
+  }
+
+  input[type='submit']{
+    @extend .submit;
+  }
+
+  .field{
+    @extend .form-group;
+  }
+
+  .field_with_errors{
+    @extend .has-error;
+  }
+}
+
+#error_explanation{
+  @extend .alert;
+  @extend .alert-danger;
+}
+
+.date-rows{
+  .date-container{
+    .day{
+      font-size: 60px;
+      line-height: 60px;
+    }
+    .date{
+      line-height: initial
+    }
   }
 }
 

@@ -1,5 +1,7 @@
 - if user_signed_in?
-  li: a href='#' Hey #{current_user.first_name}
+  - if current_user.image.present?
+    li: img.img-circle src='#{current_user.image}' alt='user image' width='50'
+  li: a href='#{new_motee_path}' Hey #{current_user.first_name}
   li = link_to 'Logout', signout_path
 - else
   li

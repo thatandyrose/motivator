@@ -1,0 +1,6 @@
+= form_for(@motee) do |f|
+  = render 'shared/form_errors', f: f
+  .field
+    = f.text_area :text, placeholder: 'The past is a ghost, the future a dream. All we ever have is now.', rows: 10
+
+  = f.submit "Save Motee"

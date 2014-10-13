@@ -22,7 +22,13 @@ class ApplicationController < ActionController::Base
     end
 
     def correct_user?
-      @user = User.find(params[:id])
+      if controller_name == 'users'
+        id = params[:id]
+      else
+        id = params[:user_id]
+      end
+
+      @user = User.find(id)
       unless current_user == @user
         redirect_to root_url, :alert => "Access denied."
       end
@@ -32,9 +38,13 @@ class ApplicationController < ActionController::Base
       current_user && current_user.email.present?
     end
 
+    def complete_user!
+      redirect_to edit_user_path(current_user), alert: 'Please enter your email address.' if !user_complete?
+    end
+
     def authenticate_user!
       if !current_user
-        redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+        redirect_to root_path, :alert => 'Login please!'
       end
     end
 

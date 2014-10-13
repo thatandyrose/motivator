@@ -1,6 +1,7 @@
 h1 Please enter your email address
 = form_for(@user) do |f|
-  = f.label :email
-  = f.text_field :email
-  br
-  = f.submit "Update"
+  .field
+    = f.label :email
+    = f.text_field :email
+
+  = f.submit "Save e-mail"
